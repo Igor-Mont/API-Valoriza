@@ -1,15 +1,13 @@
+import 'reflect-metadata';
 import express from 'express';
+import { router } from './routes';
+
+import './database';
 
 const app = express();
 
-app.get('/test', (req, res) => {
-  // req -> entering
-  // res -> going out
-  return res.send('Olá NLW')
-})
+app.use(express.json());
 
-app.post('/test-post', (req, res) => {
-  return res.send('Olá NLW Post')
-})
+app.use(router);
 
-app.listen(3000, () => console.log('Server is running NLW 🎈'))
+app.listen(3000, () => console.log('Server is running NLW 🎈'));
